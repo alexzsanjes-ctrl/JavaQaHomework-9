@@ -6,12 +6,12 @@ public class Radio {
     private int currentStation = firstStation; //номер текущей радиостанции
     private int currentVolume = minVolume; //громкость звука
 
-    public Radio () {
+    public Radio() {
         this.lastStation = lastStation;
     }
 
-    public Radio (int countStation) {
-        lastStation = countStation -1;
+    public Radio(int countStation) {
+        lastStation = countStation - 1;
     }
 
     public int getCurrentStation() {
