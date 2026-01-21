@@ -1,11 +1,12 @@
 public class Radio {
     private int currentStation; //номер текущей радиостанции
+    private int currentVolume; //громкость звука
+
 
     public int getCurrentStation() {
         return currentStation;
     }
 
-    private int currentVolume; //громкость звука
 
     public int getCurrentVolume() {
         return currentVolume;
@@ -39,6 +40,11 @@ public class Radio {
         currentStation = newCurrentStation;
     }
 
+    public void setCurrentVolume(int newCurrentVolume) {
+
+        currentVolume = newCurrentVolume;
+    }
+
     public void next() {
         if (currentStation < 9) {
             currentStation = currentStation + 1;
@@ -53,18 +59,6 @@ public class Radio {
         } else {
             setLastStation();
         }
-    }
-
-    public void setCurrentVolume(int newCurrentVolume) {
-//        if (currentVolume > 100) {
-//            setMaxVolume();
-//            return;
-//        }
-//        if (currentVolume < 0) {
-//            setMinVolume ();
-//            return;
-//        }
-        currentVolume = newCurrentVolume;
     }
 
     public void increaseVolume() {
