@@ -90,6 +90,19 @@ public class TestRadio {
     }
 
     @Test
+    public void shouldSwitchAfterLastStationWithUserPreference() {
+        Radio wave = new Radio(6);
+
+        wave.setCurrentStation(5);
+        wave.next();
+
+        int expected = 0;
+        int actual = wave.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSwitchBeforeLastStation() {
         Radio wave = new Radio();
 
