@@ -7,9 +7,21 @@ public class TestRadio {
     public void shouldSetLastStation() {
         Radio wave = new Radio();
 
-        wave.setLastStation();
+        wave.setCurrentStation(9);
 
         int expected = 9;
+        int actual = wave.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetLastStationWithUserPreference() {
+        Radio wave = new Radio(13);
+
+        wave.setCurrentStation(12);
+
+        int expected = 12;
         int actual = wave.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -19,7 +31,7 @@ public class TestRadio {
     public void shouldSetFirstStation() {
         Radio wave = new Radio();
 
-        wave.setFirstStation();
+        wave.setCurrentStation(0);
 
         int expected = 0;
         int actual = wave.getCurrentStation();
@@ -68,7 +80,20 @@ public class TestRadio {
     public void shouldSwitchAfterLastStation() {
         Radio wave = new Radio();
 
-        wave.setLastStation();
+        wave.setCurrentStation(9);
+        wave.next();
+
+        int expected = 0;
+        int actual = wave.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSwitchAfterLastStationWithUserPreference() {
+        Radio wave = new Radio(6);
+
+        wave.setCurrentStation(5);
         wave.next();
 
         int expected = 0;
@@ -81,7 +106,7 @@ public class TestRadio {
     public void shouldSwitchBeforeLastStation() {
         Radio wave = new Radio();
 
-        wave.setLastStation();
+        wave.setCurrentStation(9);
         wave.prev();
 
         int expected = 8;
@@ -94,7 +119,7 @@ public class TestRadio {
     public void shouldSwitchBeforeFirstStation() {
         Radio wave = new Radio();
 
-        wave.setFirstStation();
+        wave.setCurrentStation(0);
         wave.prev();
 
         int expected = 9;
@@ -121,7 +146,7 @@ public class TestRadio {
     public void shouldIncreaseVolumeAboveMax() {
         Radio volume = new Radio();
 
-        volume.setMaxVolume();
+        volume.setCurrentVolume(100);
         volume.increaseVolume();
 
         int expected = 100;
@@ -147,7 +172,7 @@ public class TestRadio {
     public void shouldDecreaseVolumeBelowMin() {
         Radio volume = new Radio();
 
-        volume.setMinVolume();
+        volume.setCurrentVolume(0);
         volume.decreaseVolume();
 
         int expected = 0;
